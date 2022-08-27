@@ -4,15 +4,15 @@
  * @return {number[]}
  */
 var twoSum = function(nums, target) {
-    let hash={};
-    for(let i=0;i<=nums.length;i++){
+    let hash = {};
+    for(let i=0; i<=nums.length; i++){
         let val = nums[i];
         hash[val] = i;
     }
-    for(let j = 0; j<=nums.length; j++){
-        let result = target - nums[j];
-        if(hash[result] && hash[result]!==j){
-            return [j, hash[result]];
+    for(let i=0; i<=nums.length; i++){
+        let runningKey = target - nums[i];
+        if(hash[runningKey] && hash[runningKey]!==i){
+            return [i, hash[runningKey]];
         }
     }
 };
