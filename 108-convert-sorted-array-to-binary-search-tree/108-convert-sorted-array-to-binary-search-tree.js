@@ -10,24 +10,14 @@
  * @param {number[]} nums
  * @return {TreeNode}
  */
-var sortedArrayToBST = function(nums) {
-    return createTree(nums,0,nums.length-1);
-};
-
-
-var createTree = function(nums, start, end){
-    // base case :
-    if(start == end) return new TreeNode(nums[start]);
-    if(start > end) return null;
+var sortedArrayToBST = function(nums, left = 0, right = nums.length - 1) {
+    if (left > right) return null;
+    let mid = Math.floor((left+right) / 2);
+    let root = new TreeNode(nums[mid]);
     
-    // create the node :
-    let mid = Math.floor((start + end) / 2);
-    let node = new TreeNode(nums[mid]);
+    root.left = sortedArrayToBST(nums, left, mid-1);
+    root.right = sortedArrayToBST(nums, mid+1, right);
     
-    // find the children of the node :
-    node.left = createTree(nums, start, mid-1);
-    node.right = createTree(nums, mid+1, end);
+    return root;
     
-    // return the node with its childern :
-    return node;
 };
