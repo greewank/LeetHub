@@ -4,16 +4,18 @@
  */
 var maxArea = function(height) {
 //     For loop approach didn't work so trying in while loop (maybe harder to understand)
+    let firstOne = 0;
+    let lastOne = height.length - 1;
     let area = 0;
-    let frontOne = 0;
-    let backOne = height.length - 1;
-    while(frontOne < backOne){
-        let least = Math.min(height[frontOne], height[backOne]);
-        area = Math.max(area, least * (backOne - frontOne));
-        if(height[frontOne] > height[backOne]){
-            backOne--;
-        } else{
-            frontOne++;
+    
+    while(firstOne < lastOne){
+        let least = Math.min(height[firstOne], height[lastOne]);
+        area = Math.max(area, least * (lastOne - firstOne));
+        
+        if(height[firstOne] > height[lastOne]){
+            lastOne-- ;
+        }else{
+            firstOne++;
         }
     }
     return area;
