@@ -3,11 +3,10 @@
  * @return {number}
  */
 var singleNumber = function(nums) {
-    let single = nums[0];
-    
-    for(let i=1; i<nums.length; i++){
-        single = single ^ nums[i];
-        console.log(single);
+//     Using XOR bit manipulation
+    let result = nums[0];
+    for(let i = 1; i<nums.length; i++){
+        result = result ^ nums[i];
     }
-    return single;
+    return result;
 };
