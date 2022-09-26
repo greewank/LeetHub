@@ -11,19 +11,18 @@
  * @return {boolean}
  */
 var isBalanced = function(root) {
-    let ans = true;
+    let answer = true;
     function rooting(root){
         if(!root){
             return 0;
         }
         let left = rooting(root.left);
         let right = rooting(root.right);
-        
-        if((Math.abs(left-right)) > 1){
-            ans = false;
+        if((Math.abs(left - right)) > 1){
+            answer = false;
         }
-        return (Math.max(left + 1, right + 1));
+        return Math.max(left + 1, right + 1);
     }
     rooting(root);
-    return ans;
+    return answer;
 };
