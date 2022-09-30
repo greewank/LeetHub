@@ -3,22 +3,14 @@
  * @return {number[]}
  */
 var countBits = function(n) {
-    let dp= Array(n+1).fill(0);
+//     See the most significant bit and you find that out by offsetting it.
+    let arr1 = Array(n+1).fill(0);
     let offset = 1;
     for(let i = 1; i<n+1; i++){
         if(2 * offset === i){
             offset = i;
         }
-        dp[i] = 1 + dp[i-offset];
+        arr1[i] = 1 + arr1[i - offset];
     }
-    return dp;
-  //   let result = Array(n + 1).fill(0);
-  //   let offset = 1;
-  //   for (let i = 1; i < n + 1; i++) {
-  //     if (offset * 2 === i) {
-  //         offset = i;
-  //     }
-  //     result[i] = 1 + result[i - offset];
-  //   }
-  // return result;
+    return arr1;
 };
