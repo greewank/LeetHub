@@ -3,21 +3,18 @@
  * @return {boolean}
  */
 var containsDuplicate = function(nums) {
-//     First method (using sort)
-    // let naan = nums.sort((a,b)=> a - b);
-    // for(let i = 0; i<naan.length; i++){
-    //     if(naan[i] === naan[i+1]){
-    //         return true;
-    //     }
-    // }
-    // return false;
-    
-//   Second method (Using Set):
-    const set = new Set();
-    for(let i=0; i<nums.length; i++){
-        if(set.has(nums[i]))
+    let hello = nums.sort((a,b)=>{
+        return a-b;
+    });
+    for(let i = 0; i<hello.length; i++){
+        if(hello[i] === hello[i+1]){
             return true;
-        set.add(nums[i]);
+        }
     }
     return false;
+    
+    // let hash = {};
+    // for(let i = 0; i<nums.length; i++){
+    //     hash[nums[i]]
+    // }
 };
