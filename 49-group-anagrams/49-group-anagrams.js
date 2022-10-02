@@ -3,12 +3,17 @@
  * @return {string[][]}
  */
 var groupAnagrams = function(strs) {
-        if(strs.length === 1) return [strs];
-     let map = new Map();
-    for (let str of strs){
-        let sorted = (Array.from(str).sort()).join("");
-        if(!map.has(sorted)) map.set(sorted, [str]);
-        else map.get(sorted).push(str);
-    }
-    return [...map.values()];
+  let sortedGuy = strs.map(str => str.split("").sort().join());
+  let hash ={};
+//     So we sort the original array and create a hash. In the hash we compare the sorted value as 
+//     key with the original array as value and push new ones.
+  for(let i =0; i<strs.length; i++){
+      if(!hash[sortedGuy[i]]){
+          hash[sortedGuy[i]] = [strs[i]];
+      }else{
+          hash[sortedGuy[i]].push(strs[i]);
+      }
+  }
+//     Object.values returns an ARRAY of object's values (so from that key value pair)
+    return Object.values(hash);
 };
