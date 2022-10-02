@@ -4,6 +4,8 @@
  * @return {number[]}
  */
 var topKFrequent = function(nums, k) {
+    //This solutions is O(nlogn) although as of today i'm not clear of 
+    // time complexity
     var obj ={}
     for(let i=0;i<nums.length;i++){
         if(!obj[nums[i]]) {
@@ -18,5 +20,5 @@ var topKFrequent = function(nums, k) {
      for(let i = 0; i < k; i++){
          results.push(sortedKeys[i])
      }
-    return results
+    return results;
 };
