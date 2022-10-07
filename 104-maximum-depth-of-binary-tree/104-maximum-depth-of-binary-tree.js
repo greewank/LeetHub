@@ -11,13 +11,10 @@
  * @return {number}
  */
 var maxDepth = function(root) {
-    function rooting(root){
-        if(!root)
-            return 0;
-        let left = rooting(root.left);
-        let right = rooting(root.right);
-        let maxi = Math.max(left, right) + 1;
-        return maxi;
+    if(!root){
+        return null;
     }
-    return rooting(root);
+    let left = maxDepth(root.left) + 1;
+    let right = maxDepth(root.right) + 1;
+    return Math.max(left, right);
 };
