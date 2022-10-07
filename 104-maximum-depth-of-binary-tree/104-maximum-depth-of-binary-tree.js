@@ -12,7 +12,7 @@
  */
 var maxDepth = function(root) {
     if(!root){
-        return null;
+        return 0;
     }
     let left = maxDepth(root.left) + 1;
     let right = maxDepth(root.right) + 1;
