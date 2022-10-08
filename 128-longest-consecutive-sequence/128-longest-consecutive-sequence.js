@@ -3,20 +3,19 @@
  * @return {number}
  */
 var longestConsecutive = function(nums) {
-        let set = new Set();
-    for(const n of nums) {
-        set.add(n);
+    let setoKeti = new Set();
+    for(let k of nums){
+        setoKeti.add(k);
     }
     let max = 0;
-    for(let n of set) {
-        if(!set.has(n-1)) {
+    for(let i of setoKeti){
+        if(!setoKeti.has(i-1)){
             let count = 0;
-            while(set.has(n++)) {
+            while(setoKeti.has(i++)){
                 count++;
             }
-            max = Math.max(count, max);
+            max = Math.max(max,count);
         }
     }
     return max;
-
 };
