@@ -3,16 +3,16 @@
  * @return {number[]}
  */
 var productExceptSelf = function(nums) {
-    let newArr = [];
-    let prefix = 1;
-    for(let i =0; i<nums.length; i++){
-        newArr.push(prefix);
-        prefix = prefix * nums[i];
+    let result = [];
+    let prev = 1;
+    for(let i = 0; i<nums.length; i++){
+        result.push(prev);
+        prev = nums[i] * prev;
     }
-    let postfix = 1;
-    for(let i = nums.length - 1; i >= 0; i--){
-        newArr[i] = newArr[i] * postfix;
-        postfix = postfix * nums[i];
+    let post = 1;
+    for(let j = nums.length-1; j>=0; j--){
+        result[j] = result[j] * post;
+        post = nums[j] * post;
     }
-    return newArr; 
+    return result;
 };
