@@ -3,20 +3,20 @@
  * @return {string[]}
  */
 const generateParenthesis = (n) => {
-  const res = [];
-
-  const go = (l, r, s) => { // l: left remaining, r: right remaining
-    if (l > r) return; // Validate by the number of '(' should be always >= ')'
-
-    if (l === 0 && r === 0) {
-      res.push(s);
-      return;
+    // Using backtracking and DFS So in this case, once one branch is done it goes 
+//     to other branch like in DFS.
+    let result = [];
+    const backtracking = (l , r, s) =>{
+        if(l < r) return; //base case because left is opening parentheses
+        
+        if(l === n && r === n){
+            result.push(s);
+            return;
+        }
+        if(l<n) backtracking(l+1, r, s +'(');
+        if(r<n) backtracking(l, r+1, s+')');
     }
-
-    if (l > 0) go(l - 1, r, s + '(');
-    if (r > 0) go(l, r - 1, s + ')');
-  };
-
-  go(n, n, '');
-  return res;
+    
+    backtracking(0, 0, "");
+    return result;
 };
