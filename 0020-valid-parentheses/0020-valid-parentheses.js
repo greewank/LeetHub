@@ -3,19 +3,21 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-    let sMap = {
-        ")":"(",
-        "}":"{",
-        "]":"[",
+    let bracketMap = {
+        ")":"(", 
+        "}":"{", 
+        "]":"["
     };
-    let kahileAaucha = [];
+    let stack = [];
     for(let i = 0; i<s.length; i++){
-        if(s[i]=== "(" || s[i]==="{" || s[i]==="["){
-            kahileAaucha.push(s[i]);
+        if(s[i]=== "(" || s[i] === "{" || s[i] === "["){
+            stack.push(s[i]);
             continue;
         }
-        let fluently = kahileAaucha.pop();
-        if(fluently !== sMap[s[i]]) return false;
+        let newElement = stack.pop();
+        if(newElement !== bracketMap[s[i]]){
+            return false;
+        }
     }
-    return !kahileAaucha.length;
+    return !stack.length;
 };
